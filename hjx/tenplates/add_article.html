@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <link rel="stylesheet" href="../static/css/administractor.css">
+    <title>新增博客</title>
+</head>
+
+<body>
+    <br><br><br>
+    <h1>新增博客模块</h1>
+    <form id="add_article" action="add_article" method="post">
+        <div>
+            <div class="previous_inform">
+                <label class="form_width" for="title">标题</label>
+                <input class="form_width" type="text" id="title" name="title" placeholder="请输入博客标题" required>
+            </div>
+            <div class="previous_inform">
+                <label for="public">是否公开</label>
+                <input id="public" name="public" type="radio" required value="True">是
+                <input id="public" name="public" type="radio" required value="False">否
+                <br><br>
+                <p class="text_gray">设置公开之后，此博客将会在网站的首页被展示给所有用户</p>
+            </div>
+        </div>
+        <textarea name="editor" id="editor" cols="15" rows="10" placeholder="请输入博客内容"></textarea>
+        <button id="submit123465" type="submit">submit</button>
+    </form>
+    <script src="//cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('editor')
+    </script>
+</body>
+
+</html>

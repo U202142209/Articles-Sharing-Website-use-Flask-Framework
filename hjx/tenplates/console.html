@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <link rel="stylesheet" href="../static/css/administractor.css">
+    <title>控制台</title>
+</head>
+
+<body>
+    {% extends 'base.html'%}
+    {% block content %}
+    <div class="admin_header box">
+        <h1 class="adlogo fl">
+            <a href="{{url_for('index')}}">
+                <img width="100px" src="../static/img/user.png" alt="">
+            </a>
+        </h1>
+        <h1 class="adtitle fl">欢迎&ensp;{{session['username']}}&ensp;登录</h1>
+    </div>
+    <div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for category, message in messages %}
+            <h1 class="{{ category }}">{{ message }}</h1>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div class="admin_content box">
+        <ul id="admin_options" class="admin_options">
+            <li>
+                <h1>博客管理模块</h1>
+                {% if articles==[] %}
+                <div>
+                    <h1>你目前还没有发布任何博客</h1>
+                </div>
+                {% else %}
+                <table class="view_table">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>标题</th>
+                            <th>内容</th>
+                            <th>创建时间</th>
+                            <th>是否公开</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for article in articles %}
+                        <tr>
+                            <th>{{loop.index}}</th>
+                            <th>{{article[1]}}</th>
+                            <th><a href="article/{{article[0]}}" target="_blank">查看详情</a></th>
+                            <th>{{article[3]}}</th>
+                            <th>{{article[5]}}</th>
+                            <th>
+                                <form action="deletearticle/{{article[0]}}" method="post"
+                                    onsubmit="return delete_check()">
+                                    <input type="hidden">
+                                    <input class="deleteuser" type="submit" value="删除">
+                                </form>
+                            </th>
+                            <th>
+                                <a href="edit_article/{{article[0]}}">编辑</a>
+                            </th>
+
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </li>
+            <li>
+                <!-- 新增博客 -->
+                {% include 'add_article.html' %}
+            </li>
+        </ul>
+        <ul id="admin_menu" class="admin_menu">
+            <li data-index="0">博客管理</li>
+            <li data-index="1">新增博客</li>
+        </ul>
+    </div>
+    <script src="../static/js/admin.js"></script>
+    <script src="//cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('editor')
+    </script>
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+websitenav
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网站导航</title>
+    <style>
+        #nav_content {
+            padding: 0 150px;
+        }
+        p {
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html'%}
+    {% block content %}
+    <div id="nav_content" class="box">
+        <br<br>>
+        <h1>网站导航</h1>
+        <h2>网站简介</h2>
+        <p>本网站是一个简介的博客系统，任何<a href="{{url_for('register')}}">注册</a> 过的用户，在 
+            <a href="{{url_for('login')}}">登录</a>之后，都可以在遵守国家宪法、法律及网络道德的前提下
+            发布博客，发布博客时可以选择是否公开，选择公开之后，将会在网站的<a href="{{url_for('index')}}">首页</a>中的
+            <a href="getlist/art">所有博客</a>模块中找到，并展示给所有用户，如发现违规的博客，
+            管理员具有删除的权力.
+        </p>
+        <p>
+            由于开发者水平有限，网站难免会出现bug，如您在使用的过程中遇见，感谢<a href="feedback.html">反馈</a>
+            ,我们会尽最大的努力进行完善，为您提供优质的服务.
+        </p>
+    </div>
+    {% endblock %}
+</body>
+</html>

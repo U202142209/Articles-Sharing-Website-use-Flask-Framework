@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <title>资源下载</title>
+    <style>
+        .downloadcontent {
+            padding: 20px 150px;
+            overflow: hidden;
+        }
+
+        .downloadcontent::after {
+            content: '';
+            display: none;
+            clear: both;
+        }
+
+        .downloadcontent li {
+            float: left;
+            width: 300px;
+            padding: 30px 30px;
+            margin-bottom: 45px;
+            transition: all 0.7s;
+        }
+
+        .downloadcontent li:hover {
+            box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .downloadcontent li p {
+            padding-top: 18px;
+        }
+    </style>
+</head>
+
+<body style="background-image:none;background-color: rgb(193, 213, 226); ">
+    {% extends 'base.html'%}
+    {% block content %}
+    <h1 style="padding:50px ;">资源下载</h1>
+    <ul class="downloadcontent box">
+        {% if session['logged_in'] or session['administrator'] %}
+        <!-- 只有登录的用户才可以下载 -->
+        {% for file in files %}
+        <li>
+            <a href="../static/uploads/{{file[0]}}" download="../static/uploads/{{file[0]}}">
+                <img height="140px" src="../static/img/file/{{file[3]}}.jpg" title="点击进行下载" alt="图片加载失败">
+                <p>{{file[1]}}</p>
+                <p>{{file[2] | show_date}}</p>
+            </a>
+        </li>
+        {% endfor %}
+        {% else %}
+        <!-- 没有登录，无权下载 -->
+        <h2 style="margin:30px ;" class="error">您目前还没有登录，下载无权.<a href="{{url_for('login')}}">去登录</a></h2>
+        {% for file in files %}
+        <li>
+            <img height="140px" src="../static/img/file/{{file[3]}}.jpg" title="您目前还没有登录，下载无权" alt="图片加载失败">
+            <p>{{file[1]}}</p>
+            <p>{{file[2] | show_date}}</p>
+        </li>
+        {% endfor %}
+        {% endif %}
+    </ul>
+    <p class="text_gray">以上为站内资源，所有本站用户可以免费下载</p>
+    {% endblock %}
+</body>
+
+</html>

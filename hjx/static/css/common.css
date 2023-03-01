@@ -1,0 +1,186 @@
+input {
+    outline: none;
+}
+
+body {
+    padding-top: 50px;
+    text-align: center;
+    background-image: url('https://www.ustb.edu.cn/images/content_bg.jpg'
+        );
+    background-repeat: no-repeat;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+/* 1200px ，剧中对齐*/
+.box {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+
+/* 头部 */
+.header {
+    height: 100px;
+}
+
+
+/* 导航栏 */
+.header_nav {
+    float: right;
+    margin-top: 15px;
+}
+
+.header_nav li {
+    float: left;
+    padding: 15px 15px;
+    font-size: 18px;
+}
+
+.logo {
+    padding-left: 30px;
+}
+
+.color_white {
+    color: white;
+}
+
+/* 底部信息栏 */
+.fooster {
+    padding: 80px 0;
+    background-color: rgb(137, 129, 129);
+    margin-top: 60px;
+    ;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+
+
+
+/* -------------菜单css代码----------begin---------- */
+.menuDiv {
+    border: 2px solid #aac;
+    overflow: hidden;
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #000;
+}
+
+/* 设置ul和li的样式 */
+.menuDiv ul,
+.menuDiv li {
+    float: right;
+}
+
+/* 设置二级菜单绝对定位，并隐藏 */
+.menuDiv>ul>li>ul {
+    position: absolute;
+    display: none;
+    z-index: 5;
+}
+
+/* 设置二级菜单的li的样式 */
+.menuDiv>ul>li>ul>li {
+    float: none;
+}
+
+/* 鼠标放在一级菜单上，显示二级菜单 */
+.menuDiv>ul>li:hover ul {
+    display: block;
+}
+
+/* 一级菜单 */
+.menuDiv>ul>li>a {
+    width: 165px;
+    line-height: 60px;
+    color: #fff;
+    background-color: #000;
+    display: block;
+}
+
+/* 在一级菜单中，鼠标放上去的样式 */
+.menuDiv>ul>li>a:hover {
+    background-color: rgb(107, 25, 222);
+}
+
+/* 二级菜单 */
+.menuDiv>ul>li>ul>li>a {
+    width: 165px;
+    line-height: 40px;
+    color: #fff;
+    background-color: rgb(107, 25, 222);
+    display: block;
+}
+
+/* 在二级菜单中，鼠标放上去的样式 */
+.menuDiv>ul>li>ul>li>a:hover {
+    background-color: rgb(7, 14, 27);
+}
+
+.text_gray {
+    color: gray;
+}
+
+.bc_gray {
+    background-color: gray;
+}
+
+.a123456 {
+    line-height: 70px;
+    font-style: oblique;
+    color: blue;
+}
+
+/* 底部导航栏 */
+.photo_all {
+    overflow: hidden;
+    padding: 50px  150px;
+}
+
+.test_a {
+    float: left;
+    width: 300px;
+}
+.test_a div {
+    padding-top: 50px;
+}
+.test_a img {
+    height: 150px;
+    transform: scale(1);
+    transition: all 1s ease 0s;
+}
+.test_a:hover img {
+    transform: scale(1.5);
+    transition: all 1s ease 0s;
+}
+
+

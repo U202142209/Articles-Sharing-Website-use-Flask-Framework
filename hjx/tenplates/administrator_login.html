@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>管理员登录</title>
+</head>
+
+<body>
+    {% extends 'base.html'%}
+    {% block content %}
+    <div>
+        <h1>管理员登录</h1>
+        <div class="administrator_login">
+            <form action="" method="post">
+                <div>
+                    <br><br>
+                    <input type="text" name="username" placeholder="请输入账号">
+                </div>
+                <div>
+                    <br><br>
+                    <input type="password" name="password" placeholder="请输入密码">
+                </div>
+                <div>
+                    <br>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    <ul class=flashes>
+                        {% for category, message in messages %}
+                        <br><br>
+                        <p class="{{ category }}">{{ message }}</p>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+                    <br>
+                    <input type="submit" value="Login In">
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

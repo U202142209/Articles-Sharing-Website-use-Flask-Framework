@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <title>{{article[1]}}</title>
+    <style>
+        .acontent {
+            background-color: rgb(235, 238, 209);
+            padding: 80px 130px;
+            padding-top: 120px;
+            text-align: left;
+            font-size: 20px;
+            position: relative;
+        }
+        .acontent::before {
+            content: 'content';
+            top: 20px;
+            right: 20px;
+            position:absolute;
+            font-size: 35px;
+        }
+        .arc_title {
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+
+        .arc_title h1 {
+            position: absolute;
+            top: 150px;
+            left: 150px;
+            width: 900px;
+        }
+
+        .arc_title p {
+            position: absolute;
+            top: 350px;
+            left: 450px;
+        }
+        #last {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    {% extends 'base.html'%}
+    {% block content %}
+    <div class=" box">
+        <div class="box arc_title">
+            <img width="100%" src="../static/img/post.jpg" alt="">
+            <h1 style="text-align: center;">{{article[1]}} </h1>
+            <p>作者 &ensp;{{article[4]}} &ensp; 发布时间{{article[3]}}</p>
+        </div>
+    </div>
+    <div class="acontent box">
+        <article>{{article[2] | safe }}</article>
+        <p id="last">作者 &ensp;{{article[4]}} &ensp; 发布时间{{article[3]}}</p>
+    </div>
+    {% endblock %}
+
+</body>
+
+</html>

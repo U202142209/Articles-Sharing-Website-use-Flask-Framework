@@ -1,0 +1,106 @@
+.admin_header {
+    height: 170px;
+    background-color: rgb(77, 79, 170);
+}
+
+.adtitle {
+    padding-left: 30px;
+    padding-top: 50px;
+    line-height: 80%;
+}
+
+.admin_header .adlogo {
+    width: 150px;
+    height: 50px;
+}
+
+.admin_header h1,
+.admin_menu {
+    color: aliceblue;
+}
+
+.admin_content {
+    overflow: hidden;
+    padding-bottom: 160px;
+    /* background-color: rgb(77,79,170); */
+}
+
+.admin_menu {
+    padding-top: 50px;
+    width: 200px;
+    overflow: hidden;
+    background-color: #000;
+    float: right;
+}
+
+.admin_menu li {
+    height: 50px;
+    line-height: 50px;
+}
+
+.admin_options {
+    width: 1000px;
+    overflow: hidden;
+    float: right;
+}
+
+/* 清除浮动 */
+.admin_options:after , .admin_.admin_menu {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.admin_options li {
+    display: none;
+}
+
+.admin_hover {
+    background-color: #888888;
+}
+
+
+table {
+    padding: 0 10px;
+    border: 1 solid black;
+    margin: 0 auto;
+}
+
+
+table th {
+    padding-left: 10px;
+}
+
+
+
+.trhover {
+    background-color: rgb(193, 238, 206);
+}
+
+.deleteuser {
+    background-color: rgb(239, 33, 33);
+    width: 70px;
+    height: 30px;
+    color: white;
+}
+
+
+#submit123465 {
+    display: inline-block;
+    width: 105px;
+    height: 45px;
+    font-size: 25px;
+    line-height: 45px;
+    border-radius: 22px;
+    background-color: rgb(148, 233, 154);
+}
+
+.previous_inform {
+    padding: 20px 0;
+    font-size: 20px;
+}
+
+.previous_inform #title {
+    width: 500px;
+    display: inline-block;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <style>
+        .getlistcontent:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .getlist_menu,
+        .getlist {
+            padding-top: 50px;
+            text-align: left;
+            float: left;
+        }
+
+        .getlist_menu {
+            width: 350px;
+        }
+
+        .getlist {
+            width: 850px;
+            padding-right: 70px;
+        }
+
+        .getlist>li {
+            padding: 12px 20px;
+        }
+
+        .getlist>li>a>span {
+            float: right;
+        }
+
+        .getlist_menu .listmmm {
+            text-align: center;
+            width: 150;
+            height: 60px;
+            margin: 30px 30px;
+            line-height: 60px;
+            border-radius: 10px 30px 30px 10px;
+            background-color: rgb(200, 230, 241);
+            transition: all 0.5s;
+        }
+
+        .getlist_menu .listmmm:hover {
+            box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <title> {{title}} </title>
+</head>
+
+<body>
+    {% extends 'base.html'%}
+    {% block content %}
+    <div class="getlistcontent box">
+        <div class="getlist_menu">
+            <div class="listmmm">热门推送</div>
+            <div class="listmmm">站长推荐 </div>
+            <div class="listmmm">所有博客 </div>
+            <div class="listmmm">技术分享 </div>
+        </div>
+        <ul class="getlist">
+            <h1>{{title}}</h1>
+            <li>
+                <!-- 热门推送 -->
+                {% for hot in hots %}
+            <li>
+                <strong>{{loop.index}}</strong> &ensp;
+                <a target="_blank" href="{{hot[2]}}">{{hot[1] | show_20 }} <span> {{ hot[3] | show_date
+                        }}</span></a>
+            </li>
+            {% endfor %}
+            </li>
+            <li>
+                <!-- 站长推荐 -->
+                {% for rec in recs %}
+            <li>
+                <strong>{{loop.index}}</strong> &ensp;
+                <a target="_blank" href="{{rec[2]}}">{{rec[1] | show_20 }} <span> {{ rec[3] | show_date
+                        }}</span></a>
+            </li>
+            {% endfor %}
+            </li>
+            <li>
+                <!-- 技术分享 -->
+                {% for tech in techs %}
+            <li>
+                <strong>{{loop.index}}</strong> &ensp;
+                <a target="_blank" href="{{tech[2]}}">{{tech[1] | show_20 }} <span> {{ tech[3] | show_date
+                        }}</span></a>
+            </li>
+            {% endfor %}
+
+            </li>
+
+            <li>
+                <!-- 所有博客 -->
+                {% for art in arts %}
+            <li>
+                <strong>{{loop.index}}</strong> &ensp;
+                <a target="_blank" href="/article/{{art[0]}}">{{art[1] | show_20 }} <span> 作者&ensp; {{art[3]}}
+                    &ensp;&ensp;&ensp; {{ art[2] | show_date
+                    }}</span></a>
+            </li>
+            {% endfor %}
+            </li>
+        </ul>
+    </div>
+
+    {% endblock %}
+</body>
+
+</html>

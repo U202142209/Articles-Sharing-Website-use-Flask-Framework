@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查看反馈</title>
+</head>
+<body>
+    {% extends 'base.html'%}
+    {% block content %}
+    <div style="padding-top:30px;">
+        <h1>邮箱;{{feedback[0]}}</h1>
+        <br>
+        <article>内容；<br>{{feedback[1]}}</article>
+        <br>
+        <p>创建时间;{{feedback[3]}}</p>
+        <br>
+        <p>IP地址;{{feedback[2]}}</p>
+    </div>
+    {% endblock %}
+</body>
+</html>

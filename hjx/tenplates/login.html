@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <title>用户登录</title>
+</head>
+
+<body>
+    {% extends 'base.html'%}
+    {% block content %}
+    <div class="login">
+        <h1>用户登录</h1>
+        <ul id="menus">
+            <br>
+            <li class="hover" data-index="0">邮箱登录</li>
+            <li data-index="1">密码登录</li>
+        </ul>
+        <ul id="opinions">
+            <br><br>
+            <li class="email_enter">
+                <form action="get_code" method="post" onsubmit="return get_verificate_code_check()">
+                    <div>
+                        <label for="email">邮&ensp;箱</label>
+                        <input id="get_email" type="email" name="email" value="{{session['email']}}" placeholder="请输入邮箱"
+                            required>
+                        <br>
+                        <input type="submit" value="获取验证码">
+                    </div>
+                </form>
+                <div>
+                    <form action="verificate_code" method="post">
+                        <label for="verificate_code">验证码</label>
+                        <input type="text" name="verificate_code" id="verificate_code" placeholder="请输入验证码">
+                        <div>
+                            <br><br>
+                            <div>
+                                {% with messages = get_flashed_messages(with_categories=true) %}
+                                {% if messages %}
+                                <ul class=flashes>
+                                    {% for category, message in messages %}
+                                    <p class="{{ category }}">{{ message }}</p><br>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                                {% endwith %}
+                            </div>
+                            {% if session['verificate_code'] %}
+                            <input id="enter0123" type="submit" value="确     定">
+                            {% endif %}
+                        </div>
+                    </form>
+
+                </div>
+            </li>
+            <li data-content="" class="password_enter">
+                <form action="" method="post" onsubmit="return fore_vificate()">
+                    <div>
+                        <label for="username">用户名</label>
+                        <input type="text" id="username" placeholder="请输入用户名" name="username" required>
+                    </div>
+                    <div>
+                        <br><br>
+                        <label for="password">密&ensp;码</label>
+                        <input type="password" name="password" id="password" placeholder="请输入密码" required>
+                    </div>
+                    <div>
+                        <!-- <div class="vificate_code"></div> -->
+                        <br>
+                        <canvas id="mycanvas"></canvas><br /><br />
+                        <input type="button" id="mybutton" value="刷新" onclick="code(options)" />
+                        <input id="incode" type="text" placeholder="请输入图片验证码">
+                    </div>
+                    <div>
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        <ul class=flashes>
+                            {% for category, message in messages %}
+                            <br><br>
+                            <p class="{{ category }}">{{ message }}</p>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% endwith %}
+                    </div>
+                    <div>
+                        <br><br>
+                        <input id="enter123" type="submit" value="登     录">
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <div style="padding-bottom: 30px;">
+        <a id="go_to_register" href="register.html">没有账号，去注册</a>
+    </div>
+
+    <script src="../static/js/login_register.js"></script>
+    {% endblock %}
+
+</body>
+
+</html>

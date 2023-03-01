@@ -1,0 +1,41 @@
+/* 最大的容器 */
+.login {
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 45px 0;
+}
+
+#menus li {
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+input {
+    padding: 10px 5px;
+}
+
+/* 登录选项设置 */
+.hover {
+    border-bottom: 3px solid red;
+}
+
+/* 隐藏选项，初始化 */
+#opinions li {
+    display: none;
+}
+
+/* 密码登录按钮设置 */
+#enter123,
+#enter0123 {
+    width: 120px;
+    height: 35px;
+    background-color: rgb(148, 234, 164);
+    border-radius: 17px;
+}
+
+/* 用户控制台样式 */
+.console_header {
+    background-color: rgb(77, 79, 170);
+    height: 150px;
+}

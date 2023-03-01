@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板</title>
+</head>
+
+<body>
+<div class="header box">
+    <h1 class="fl logo"><a href="{{url_for('index')}}">
+        <img width="100%" src="../static/img/logo.png" alt="">
+    </a></h1>
+    <h1 class="a123456 fl">不如烂笔头</h1>
+    <ul class="header_nav fr">
+        <li><a href="{{url_for('index')}}">首页</a></li>
+        <li><a href="feedback.html">反馈</a></li>
+        {% if session['logged_in'] %}
+        <li><a href="{{url_for('console')}}">控制台</a></li>
+        <li><a href="{{url_for('logout')}}">退出</a></li>
+        {% else %}
+        <li><a href="{{url_for('login')}}">登录</a></li>
+        <li>|</li>
+        <li><a href="{{url_for('register')}}">注册</a></li>
+        {% endif %}
+    </ul>
+</div>
+<!-- 菜单栏 -->
+<div class="menuDiv">
+    <ul>
+        <li>
+            <a href="#">北京科技大学常用网站</a>
+            <ul>
+                <li><a target="_blank" href="https://cc.ustb.edu.cn/meol/teacher.do">THEOL网络教学综合平台</a></li>
+                <li><a target="_blank" href="https://jwgl.ustb.edu.cn/">教务系统</a></li>
+                <li><a target="_blank" href="https://www.ustb.edu.cn/">学校官网</a></li>
+                <li><a target="_blank" href="http://ucb.ustb.edu.cn/">锐格网络平台</a></li>
+                <li><a target="_blank" href="http://222.199.222.14/">USTB校园网</a></li>
+                <li><a target="_blank" href="http://n.ustb.edu.cn/">外网访问</a></li>
+                <li><a
+                        href="http://n.ustb.edu.cn/http/77726476706e69737468656265737421a2a713d275603c1e2b5ac7f9cf/user/login">大学生入党在线培训平台</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">关于本站</a>
+            <ul>
+                {% if session['logged_in'] %}
+                <li><a href="{{url_for('console')}}">控制台</a></li>
+                <li><a href="{{url_for('logout')}}">退出</a></li>
+                {% else %}
+                <li><a href="{{url_for('login')}}">登录</a></li>
+
+                <li><a href="{{url_for('register')}}">注册</a></li>
+                {% endif %}
+                <li><a href="websitenav">网站导航</a></li>
+                <li><a href="feedback.html">意见反馈</a></li>
+                <li><a href="{{url_for('download')}}">资源下载</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">在线小游戏</a>
+            <ul>
+                <li><a target="_blank" href="https://www.html5tricks.com/demo/jiaoben1765/index.html">中国象棋</a></li>
+                <li><a target="_blank" href="https://www.html5tricks.com/demo/wuziqi/index.html">在线五子棋</a></li>
+                <li><a target="_blank" href="https://www.html5tricks.com/demo/html5-mario/index.html">超级玛丽</a></li>
+                <li><a target="_blank"
+                       href="https://www.yikm.net/play?id=9252&n=f&t=%E6%AD%BB%E7%A5%9EVS%E7%81%AB%E5%BD%B12.0&ac=6">死神VS火影2.0</a>
+                </li>
+                <li><a target="_blank" href="https://arcxingye.github.io/zhsl/index.html">召唤神龙</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">放松娱乐</a>
+            <ul>
+                <li><a target="_blank" href="https://www.douyin.com/">抖音</a></li>
+                <li><a target="_blank" href="https://www.bilibili.com/">哔哩哔哩</a></li>
+                <li><a target="_blank" href="http://www.4399.com/">4399小游戏</a></li>
+                <li><a target="_blank" href=" https://h5login.qqchess.qq.com/">天天象棋网页版</a></li>
+
+            </ul>
+        </li>
+        <li>
+            <a href="#">学习社区</a>
+            <ul>
+                <li><a target="_blank" href="https://www.icourse163.org/">中国大学mook</a></li>
+                <li><a target="_blank" href="http://i.chaoxing.com/base?t=1651822908599">学习通</a></li>
+                <li><a target="_blank" href="https://www.zhihuishu.com/">智慧树</a></li>
+                <li><a target="_blank" href="https://www.mingrisoft.com/">明日学院首页</a></li>
+                <li><a target="_blank" href="https://www.csdn.net/">csdn开发者社区</a></li>
+                <li><a target="_blank" href="https://www.yuketang.cn/v2/web/index">雨课堂</a></li>
+                <!-- <li><a href=""></a></li> -->
+            </ul>
+        </li>
+        <!-- <li>
+                <a href="#">便捷服务→</a>
+            </li> -->
+    </ul>
+</div>
+{% block content %}
+
+{% endblock %}
+<div class="fooster color_white box">
+    <P>欢迎使用好记性博客系统，如遇到问题，请<a href="feedback.html">点击这里反馈</a>，或联系我们</P>
+    <div class="photo_all box">
+            <span class="test_a">
+                <img height="150px" class="foost_img" src="../static/img/organize.png" alt="">
+                <div>关注我们团队</div>
+            </span>
+        <span class="test_a">
+                <img class="foost_img" src="../static/img/weixin.png" alt="">
+                <div>联系作者微信</div>
+            </span>
+        <span class="test_a">
+                <img class="foost_img" src="../static/img/qq.png" alt="">
+                <div>添加作者QQ</div>
+            </span>
+    </div>
+
+</div>
+
+</body>
+
+</html>

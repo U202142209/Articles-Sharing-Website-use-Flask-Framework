@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <style>
+        .content_404 {
+            text-align: center;
+        }
+
+        #turn_to_first_page {
+            display: inline-block;
+            width: 90px;
+            height: 40px;
+            border-radius: 20px;
+            line-height: 40px;
+            text-decoration: none;
+            background-color: rgb(161, 209, 233);
+        }
+    </style>
+    <title>404</title>
+</head>
+
+<body>
+    {% extends 'base.html'%}
+    {% block content %}
+    <div style="padding: 50px 0;" class="content_404">
+        <div class="img" style="text-align: center;">
+            <img src="../static/img/404.png" width="400px" alt="">
+        </div>
+        <br><br>
+        <h1>你要找的页面不存在</h1>
+        <br><br>
+        <a id="turn_to_first_page" href="{{url_for('index')}}">返回首页</a>
+    </div>
+    {% endblock %}
+
+</body>
+
+</html>

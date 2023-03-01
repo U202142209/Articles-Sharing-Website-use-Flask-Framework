@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <title>好记性博客-首页</title>
+    <style>
+        .hot_display {
+            overflow: hidden;
+            padding-top: 50px;
+        }
+
+        .hot_display:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .hot_logo,
+        .hot_content {
+            /* float: left; */
+            float: left;
+            height: 400px;
+            padding-top: 30px;
+        }
+
+        .hot_logo {
+            width: 450px;
+        }
+
+        .hot_content {
+            width: 750px;
+            text-align: left;
+            padding-left: 35px;
+        }
+
+        .hot_content>li {
+            padding: 20px 35px;
+            transition: all 0.5s;
+            border-radius: 20px;
+        }
+
+        .hot_content>li:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .hot_content>li>a>span {
+            float: right;
+            padding-right: 35px;
+        }
+
+        /* 以下为图片阴影效果 */
+        .imgbox {
+            width: 220px;
+            margin-left: 100px;
+            position: relative;
+        }
+
+        .imgbox::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 3;
+        }
+
+        .imgbox:hover::before {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    {% extends 'base.html'%}
+    {% block content %}
+
+    <div class="index_content box">
+        <div class="advertise box">
+            <img id="title_img" width="100%" height="650px"
+                src="https://tse3-mm.cn.bing.net/th/id/OIP-C.fmUCuhDtfIfYtjMd3LpKSAHaEo?w=269&h=180&c=7&r=0&o=5&dpr=1.12&pid=1.7"
+                alt="">
+        </div>
+
+        <!-- 热门推送模块 -->
+        <div class="hot_display box">
+            <div style="padding-top: 70px;" class="hot_logo tab_img">
+                <div class="imgbox">
+                    <img class="tab_log" id="tab_img"
+                        src="https://tse2-mm.cn.bing.net/th/id/OIP-C.AfMkUyRFJf-YE8UtNdCTBQHaHa?w=181&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7"
+                        alt="">
+                </div>
+            </div>
+            <div class="hot_content">
+                <div style="width: 300px ; border-bottom: 2px solid blue;">
+                    <img style="vertical-align:middle;" src="https://www.ustb.edu.cn/images/news_bg.png" alt="">
+                    <a href="getlist/hot"><span> &ensp;&ensp;热门推送&ensp;&ensp;&ensp;&ensp;更多&ensp;&ensp;
+                            &gt;&gt;</span></a>
+                </div>
+                {% for hot in hots | show_5 %}
+                <li>
+                    <strong>{{loop.index}}</strong> &ensp;
+                    <a target="_blank" href="{{hot[2]}}">{{hot[1] | show_20 }} <span> {{ hot[3] | show_date
+                            }}</span></a>
+                </li>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- 站长推荐模块 -->
+
+        <div class="hot_display box">
+            <div style="padding-top: 70px; float: right; " class="hot_logo">
+                <div class="imgbox">
+                    <img class="tab_log"
+                        src="https://tse2-mm.cn.bing.net/th/id/OIP-C.BmfqGc7JtnQ1yLgIifExpQHaHa?w=186&h=186&c=7&r=0&o=5&dpr=1.25&pid=1.7"
+                        alt="">
+                </div>
+            </div>
+            <div class="hot_content">
+                <div style="width: 300px ; border-bottom: 2px solid blue;">
+                    <img style="vertical-align:middle;" src="https://www.ustb.edu.cn/images/topic_bg.png" alt="">
+                    <a href="getlist/rec"><span> &ensp;&ensp;站长推荐&ensp;&ensp;&ensp;&ensp;更多&ensp;&ensp;
+                            &gt;&gt;</span></a>
+                </div>
+                {% for rec in recs | show_5 %}
+                <li>
+                    <strong>{{loop.index}}</strong> &ensp;
+                    <a target="_blank" href="{{rec[2]}}">{{rec[1] | show_20 }} <span> {{ rec[3] | show_date
+                            }}</span></a>
+                </li>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- 所有博客 -->
+
+        <div class="hot_display box">
+            <div style="padding-top: 70px;" class="hot_logo tab_img">
+                <div class="imgbox">
+                    <img class="tab_log" id="tab_img"
+                        src="https://tse4-mm.cn.bing.net/th/id/OIP-C.cqmqDUAmy50mxu8MLKhyfwAAAA?w=196&h=159&c=7&r=0&o=5&dpr=1.25&pid=1.7"
+                        alt="">
+                </div>
+            </div>
+            <div class="hot_content">
+                <div style="width: 300px ; border-bottom: 2px solid blue;">
+                    <img style="vertical-align:middle;" src="https://www.ustb.edu.cn/images/news_bg.png" alt="">
+                    <a href="getlist/art"><span> &ensp;&ensp;所有博客&ensp;&ensp;&ensp;&ensp;更多&ensp;&ensp;
+                            &gt;&gt;</span></a>
+                </div>
+                {% for art in arts | show_5 %}
+                <li>
+                    <strong>{{loop.index}}</strong> &ensp;
+                    <a target="_blank" href="article/{{art[0]}}">{{art[1] | show_20 }} <span> 作者&ensp; {{art[3]}}
+                            &ensp;&ensp;&ensp; {{ art[2] | show_date
+                            }}</span></a>
+                </li>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- 技术分享模块 -->
+
+        <div class="hot_display box">
+            <div style="padding-top: 70px;" class="hot_logo">
+                <!-- 鼠标金国图片阴影效果 -->
+                <div class="imgbox">
+                    <img class="tab_log" id="tab_img"
+                        src="https://tse4-mm.cn.bing.net/th/id/OIP-C.G7lkdqqHGFF8k9j-xq4bXgHaHa?w=183&h=184&c=7&r=0&o=5&dpr=1.25&pid=1.7"
+                        alt="">
+                </div>
+
+            </div>
+            <div class="hot_content">
+                <div style="width: 300px ; border-bottom: 2px solid blue;">
+                    <img style="vertical-align:middle;" src="https://www.ustb.edu.cn/images/news_bg.png" alt="">
+                    <a href="getlist/tech"><span> &ensp;&ensp;技术分享&ensp;&ensp;&ensp;&ensp;更多&ensp;&ensp;
+                            &gt;&gt;</span></a>
+                </div>
+                {% for tech in techs | show_5 %}
+                <li>
+                    <strong>{{loop.index}}</strong> &ensp;
+                    <a target="_blank" href="{{tech[2]}}">{{tech[1] | show_20 }} <span> {{ tech[3] | show_date
+                            }}</span></a>
+                </li>
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+    </div>
+    <script type="text/javascript">
+        //首页的图片自动切换
+        window.onload = function () {
+            var img = document.getElementById('tab_img');
+            var arr = ['https://tse2-mm.cn.bing.net/th/id/OIP-C.YIF61t6X89TRtidea6G6PQHaHa?w=169&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7',
+                'https://tse2-mm.cn.bing.net/th/id/OIP-C.AfMkUyRFJf-YE8UtNdCTBQHaHa?w=181&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7',
+                'https://tse1-mm.cn.bing.net/th/id/OIP-C.VPupVFgr1cz17DEAOIZWnAHaHa?w=179&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7'];
+            var n = 0;
+            var m = 0;
+            var title_img = document.getElementById('title_img');
+            var t_img_list = ['https://tse3-mm.cn.bing.net/th/id/OIP-C.BUwZb6GJJXynOhBtAlYoVAHaEK?w=284&h=180&c=7&r=0&o=5&dpr=1.12&pid=1.7'
+                , 'https://tse3-mm.cn.bing.net/th/id/OIP-C.BUwZb6GJJXynOhBtAlYoVAHaEK?w=303&h=180&c=7&r=0&o=5&dpr=1.12&pid=1.7'
+                , 'https://tse2-mm.cn.bing.net/th/id/OIP-C.OO1tqEqdiDVLhnnlljq7JwHaEo?w=267&h=180&c=7&r=0&o=5&dpr=1.12&pid=1.7'
+                , 'https://tse2-mm.cn.bing.net/th/id/OIP-C.oF9Xuu5Trl4yNOhPj5hnywHaEo?w=253&h=180&c=7&r=0&o=5&dpr=1.12&pid=1.7'
+                , 'https://tse4-mm.cn.bing.net/th/id/OIP-C.6BsXZYdHZaAFyXZMj21bxwHaEo?w=289&h=180&c=7&r=0&o=5&dpr=1.12&pid=1.7']
+            function qh() {
+                n++; m++;
+                if (n >= arr.length) {
+                    n = 0;
+                }
+                if (m >= t_img_list.length) {
+                    m = 0;
+                }
+                title_img.src = t_img_list[m];    //背景图片更换
+                img.src = arr[n];
+            }
+            setInterval(qh, 1200);
+        }
+    </script>
+    {% endblock %}
+</body>
+
+</html>
